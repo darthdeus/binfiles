@@ -1,0 +1,23 @@
+#!/bin/bash
+olddir=$(pwd)
+dirs=$*
+if [ -z "$1" ]; then
+  dirs='.'
+fi
+
+for dir in $dirs; do
+  find $dir -type d -maxdepth 1 -mindepth 1 | while read x; do
+    echo "$x"
+    cd "$x"
+
+    if [ -d .git ]; then
+      git pull
+    elif [ -d .svn ]; then
+      svn up
+    elif [ -d .hg ]; then
+      hg update
+    fi
+
+    cd "$olddir"
+  done
+done

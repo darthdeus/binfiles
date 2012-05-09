@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $0 [system | lib | user]"
+  exit
+fi
+
+gemdir=''
+gemcmd=''
+case $1 in
+  'system')
+    gemcmd=/usr/bin/gem
+    gemdir='/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/'
+    ;;
+  'lib')
+    gemcmd=/usr/bin/gem
+    gemdir=$($gemcmd env gemdir)
+    ;;
+  'user')
+    gemcmd=~/.rvm/rubies/default/bin/gem
+    gemdir=$($gemcmd env gemdir)
+    ;;
+esac
+
+$gemcmd list | cut -d" " -f1 | xargs sudo $gemcmd uninstall -aIx -i $gemdir

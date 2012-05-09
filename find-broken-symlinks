@@ -1,0 +1,6 @@
+#!/bin/sh
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $0 searchdir"
+  exit
+fi
+find $1 -type l | (while read FN ; do test -e "$FN" || ls -ld "$FN"; done)
