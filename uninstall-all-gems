@@ -7,6 +7,7 @@ fi
 
 gemdir=''
 gemcmd=''
+sudo='sudo'
 case $1 in
   'system')
     gemcmd=/usr/bin/gem
@@ -17,9 +18,10 @@ case $1 in
     gemdir=$($gemcmd env gemdir)
     ;;
   'user')
-    gemcmd=~/.rvm/rubies/default/bin/gem
+    gemcmd=~/.rbenv/shims/gem
     gemdir=$($gemcmd env gemdir)
+    sudo=''
     ;;
 esac
 
-$gemcmd list | cut -d" " -f1 | xargs sudo $gemcmd uninstall -aIx -i $gemdir
+$gemcmd list | cut -d" " -f1 | xargs $sudo $gemcmd uninstall -aIx -i $gemdir
