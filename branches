@@ -1,0 +1,13 @@
+#!/bin/sh
+dir=$1
+if [[ $# -lt 1 ]]; then
+  dir='.'
+fi
+for x in $(ls $dir); do
+  cd $x
+  if [ -d .git ]; then
+    echo "=> $x"
+    git branch
+  fi
+  cd ..
+done
