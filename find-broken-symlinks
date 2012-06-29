@@ -1,6 +1,6 @@
 #!/bin/sh
+dir=$1
 if [[ $# -lt 1 ]]; then
-  echo "Usage: $0 searchdir"
-  exit
+  dir='.'
 fi
-find $1 -type l | (while read FN ; do test -e "$FN" || ls -ld "$FN"; done)
+find $dir -type l | (while read FN ; do test -e "$FN" || ls -ld "$FN"; done)
