@@ -7,8 +7,8 @@ fi
 
 for dir in $dirs; do
   find $dir -type d -maxdepth 1 -mindepth 1 | while read x; do
-    echo "$x"
     cd "$x"
+    echo "=> $(color blue)$x$(color off)"
 
     if [ -d .git ]; then
       git pull

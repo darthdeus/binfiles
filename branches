@@ -6,7 +6,7 @@ fi
 for x in $(find $dir -mindepth 1 -maxdepth 1 -type d); do
   cd $x
   if [ -d .git ]; then
-    echo "=> $x"
+    echo "=> $(color blue)$x$(color off)"
     git branch
   fi
   cd $OLDPWD

@@ -1,4 +1,8 @@
 #!/bin/sh
 root='/Users/mdi/projects'
 projects=$(cat ~/.projects)
-for project in $projects; do echo "=> $project"; cd "$root/$project" && bundle $@; done
+for project in $projects; do
+  echo "=> $(color blue)$project$(color off)"
+  cd "$root/$project"
+  bundle $@
+done
