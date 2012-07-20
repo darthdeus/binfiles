@@ -1,4 +1,4 @@
 #!/bin/sh
 root='/Users/mdi/projects'
 projects=$(cat ~/.projects)
-for project in $projects; do cd "$root/$project" && bundle $1; done
+for project in $projects; do echo "=> $project"; cd "$root/$project" && bundle $@; done
