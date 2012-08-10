@@ -6,3 +6,4 @@ npm update -g
 for x in $(cat ~/Documents/gems.txt ); do gem update $x; done
 update-repos ~/src ~/projects
 cd ~/projects/dotfiles && git submodule foreach git pull 
+cd ~/projects/lj-api && heroku mongo:pull
