@@ -1,14 +1,14 @@
 #!/bin/bash
-olddir=$(pwd)
 dirs=$*
 if [ -z "$1" ]; then
-  dirs='.'
+  dirs='*'
 fi
 
 for dir in $dirs; do
-  find $dir -type d -maxdepth 1 -mindepth 1 | while read x; do
-    cd "$x"
-    echo "=> $(color blue)$x$(color off)"
+  cd "$dir"
+
+  if [ -d .git ] || [ -d .svn ] || [ -d .hg ]; then
+    echo "=> $(color blue)$dir$(color off)"
 
     if [ -d .git ]; then
       git pull
@@ -17,7 +17,7 @@ for dir in $dirs; do
     elif [ -d .hg ]; then
       hg update
     fi
+  fi
 
-    cd "$olddir"
-  done
+  cd $OLDPWD
 done
