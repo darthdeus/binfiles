@@ -1,14 +1,11 @@
 #!/bin/sh
-
 if [[ $# -lt 1 ]]; then
-  echo "Usage: $0 database"
-  exit
+  echo "Usage: $0 <database>"
+  exit 1
 fi
 
 db=$1
-
 vacuumdb $1
-
 psql -t $db <<-SQL
   SELECT 
     nspname AS schemaname, relname, reltuples
