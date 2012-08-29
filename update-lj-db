@@ -1,0 +1,6 @@
+#!/bin/sh
+cd ~/projects/lj-api
+heroku mongo:pull
+rake tire:index:drop INDEX=lj-development
+rake environment tire:import CLASS=Act
+rake environment tire:import CLASS=Venue
