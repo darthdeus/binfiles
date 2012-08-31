@@ -3,7 +3,7 @@ brew update
 brew upgrade
 brew cleanup -s --force
 npm update -g
-for x in $(cat ~/Documents/gems.txt ); do gem update $x; done
+for x in $(cat ~/Documents/install/gems.txt ); do gem update $x; done
 update-repos ~/src/* ~/projects/*
 cd ~/projects/dotfiles && git submodule foreach git pull 
 update-lj-db
