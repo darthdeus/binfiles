@@ -5,19 +5,21 @@ if [ -z "$1" ]; then
 fi
 
 for dir in $dirs; do
-  cd "$dir"
+  if [ -d $dir ]; then
+    cd "$dir"
 
-  if [ -d .git ] || [ -d .svn ] || [ -d .hg ]; then
-    echo "=> $(color blue)$dir$(color off)"
+    if [ -d .git ] || [ -d .svn ] || [ -d .hg ]; then
+      echo "=> $(color blue)$dir$(color off)"
 
-    if [ -d .git ]; then
-      git pull
-    elif [ -d .svn ]; then
-      svn up
-    elif [ -d .hg ]; then
-      hg update
+      if [ -d .git ]; then
+        git pull
+      elif [ -d .svn ]; then
+        svn up
+      elif [ -d .hg ]; then
+        hg update
+      fi
     fi
-  fi
 
-  cd $OLDPWD
+    cd $OLDPWD
+  fi
 done

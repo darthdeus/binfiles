@@ -1,5 +1,9 @@
 #!/bin/sh
-for i in $(/bin/ls -Rl@ | grep "\t" | awk '{print $1}' | sort -u); do \
+for i in $(/bin/ls -Rl@ "$1" | grep "\t" | awk '{print $1}' | sort -u); do \
   echo Removing $i ... >&2; \
-  find . -print0 | xargs -0 xattr -d $i 2>/dev/null
+  if [ -d "$1" ]; then
+    find . -print0 | xargs -0 xattr -d $i 2>/dev/null
+  else
+    xattr -d $i "$1"
+  fi
 done

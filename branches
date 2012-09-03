@@ -4,10 +4,12 @@ if [[ $# -lt 1 ]]; then
   dirs='*'
 fi
 for dir in $dirs; do
-  cd "$dir"
-  if [ -d .git ]; then
-    echo "=> $(color blue)$dir$(color off)"
-    git branch
+  if [ -d $dir ]; then
+    cd "$dir"
+    if [ -d .git ]; then
+      echo "=> $(color blue)$dir$(color off)"
+      git branch
+    fi
+    cd $OLDPWD
   fi
-  cd $OLDPWD
 done
