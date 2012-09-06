@@ -1,9 +1,13 @@
 #!/bin/sh
-for i in $(/bin/ls -Rl@ "$1" | grep "\t" | awk '{print $1}' | sort -u); do \
+arg="$1"
+if [[ $# -lt 1 ]]; then
+  arg='.'
+fi
+for i in $(/bin/ls -Rl@ "$arg" | grep "\t" | awk '{print $1}' | sort -u); do \
   echo Removing $i ... >&2; \
-  if [ -d "$1" ]; then
+  if [ -d "$arg" ]; then
     find . -print0 | xargs -0 xattr -d $i 2>/dev/null
   else
-    xattr -d $i "$1"
+    xattr -d $i "$arg"
   fi
 done
