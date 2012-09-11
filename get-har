@@ -1,0 +1,24 @@
+#!/bin/sh
+PHANTOM_PATH=~/src/phantomjs
+
+page=$1
+if [ -z $page ]; then
+  echo "Usage: $0 <page to process> [directory to save output]"
+  exit 1
+elif [[ !($page =~ ^https?://) ]]; then
+  echo "Page to process must start with http:// or https://"
+  exit 1
+fi
+
+output_dir=$2
+if [ -z $output_dir ]; then
+  output_dir='.'
+fi
+
+safe=$(echo $page|sed -E -e "s,https?://,,"|sed -e "s,/,-,")
+date=$(date '+%Y%m%d-%H%M%S')
+output_file="$output_dir/$safe-$date.har"
+
+$PHANTOM_PATH/bin/phantomjs $PHANTOM_PATH/examples/netsniff.js $page > $output_file
+
+echo "HAR saved to $output_file"
