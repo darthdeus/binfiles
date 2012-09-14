@@ -16,6 +16,7 @@ for dir in $dirs; do
       elif [ -d .svn ]; then
         svn up
       elif [ -d .hg ]; then
+        hg pull
         hg update
       fi
     fi
