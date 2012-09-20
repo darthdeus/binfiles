@@ -1,4 +1,5 @@
+#!/bin/sh
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool yes
 defaults write com.apple.finder QuitMenuItem -bool YES
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
-defaults write NSGlobalDomain KeyRepeat -int 1
+# defaults write NSGlobalDomain InitialKeyRepeat -int 15
+# defaults write NSGlobalDomain KeyRepeat -int 1
