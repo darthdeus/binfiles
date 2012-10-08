@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+d() {
+  git push origin :$1
+  git branch -d $1
+}
+
+for b in $(git branch -r --merged develop | sed 's/ *origin\///' | egrep -v '(master|develop)$'); do
+  echo "Delete $b? y or any key"
+  read eq "y" && d $b
+done
