@@ -8,4 +8,4 @@ update-repos ~/src/* ~/projects/*
 cd ~/projects/dotfiles && git submodule foreach git pull 
 # update-lj-db
 # find ~/projects -name \*.log -delete
-# for x in $(cat ~/.projects); do cd $x; rake tmp:clear; cd -; done
+# for x in $(cat ~/.projects); do cd $x; rake tmp:clear; rtags; cd -; done
