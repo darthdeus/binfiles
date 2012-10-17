@@ -2,7 +2,11 @@
 root='/Users/mdi/projects'
 projects=$(cat ~/.projects)
 for project in $projects; do
-  echo "=> $(color blue)$project$(color off)"
   cd "$root/$project"
-  bundle $@
+  if [ -f "Gemfile" ]; then
+    echo "=> $(color blue)$project$(color off)"
+    bundle $@
+  else
+    break
+  fi
 done
