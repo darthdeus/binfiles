@@ -1,10 +1,10 @@
 #!/bin/sh
-root='/Users/mdi/projects'
-projects=$(cat ~/.projects)
-for project in $projects; do
-  cd "$root/$project"
+root='/Users/mdi/src'
+projects=$PROJECTS
+for p in $projects; do
+  cd $root/$p
   if [ -f "Gemfile" ]; then
-    echo "=> $(color blue)$project$(color off)"
+    echo "=> $(color blue)$p$(color off)"
     bundle $@
   else
     break

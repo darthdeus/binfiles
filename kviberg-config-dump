@@ -1,2 +1,2 @@
 #!/bin/sh
-mysqldump kviberg-config-development -nt --skip-extended-insert --ignore-table=kviberg-config-development.schema_migrations > db/export.sql
+mysqldump kviberg-config-development -nt --skip-extended-insert --ignore-table=kviberg-config-development.schema_migrations
