@@ -2,5 +2,4 @@
 cd ~/src/kviberg-config
 rake db:drop && rake db:create && rake db:migrate && mysql kviberg-config-development < db/export.sql
 mysql kviberg-config-development -e "insert into domains (site_id, domain_name) values (1, 'dekho.kviberg-touch.10.0.1.53.xip.io');"
-mysql kviberg-config-development -e "insert into domains (site_id, domain_name) values (1, 'dekho.kviberg-touch.192.168.0.10.xip.io');"
 redis-cli flushall
