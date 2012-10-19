@@ -8,5 +8,4 @@ for x in $(cat ~/Documents/install/gems.txt ); do gem update $x; done
 update-repos $proj_dir/*
 cd $proj_dir/dotfiles && git submodule foreach git pull
 # update-lj-db
-find $proj_dir -name \*.log -delete 2>/dev/null
-for x in $PROJECTS; do cd $proj_dir/$x; rake tmp:clear 2>/dev/null; ctags -R 2>/dev/null; done
+for x in $PROJECTS; do cd $proj_dir/$x; find . -name \*.log -delete; rake tmp:clear 2>/dev/null; ctags -R 2>/dev/null; done
