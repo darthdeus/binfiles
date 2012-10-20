@@ -7,5 +7,3 @@ npm update -g
 for x in $(cat ~/Documents/install/gems.txt ); do gem update $x; done
 update-repos $proj_dir/*
 cd $proj_dir/dotfiles && git submodule foreach git pull
-# update-lj-db
-# for x in $P; do cd $proj_dir/$x; find . -name \*.log -exec cat /dev/null > {} \;; rake tmp:clear 2>/dev/null; ctags -R 2>/dev/null; done
