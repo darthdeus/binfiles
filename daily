@@ -4,6 +4,7 @@ brew update
 brew upgrade
 brew cleanup -s --force
 npm update -g
-for x in $(cat ~/Documents/install/gems.txt ); do gem update $x; done
+for x in $(cat ~/Documents/install/gems.txt); do gem update $x; done
 update-repos $proj_dir/*
+for x in $P; do cd $proj_dir/$x; ctags; done
 cd $proj_dir/dotfiles && git submodule foreach git pull
