@@ -5,6 +5,6 @@ d() {
 
 for b in $(git branch -r --merged develop | sed 's/ *origin\///' | egrep -v '(master|develop)$'); do
   doit=
-  vared -p "Echo $b? y or any key " doit
+  vared -p "Echo $b? y or any key: " doit
   [[ $doit == "y" ]] && d $b
 done
