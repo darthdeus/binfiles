@@ -3,3 +3,4 @@ cd ~/src/kviberg-config
 bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake db:migrate && mysql kviberg-config-development < db/export.sql
 mysql kviberg-config-development -e "insert into domains (site_id, domain_name) values (1, 'dekho.kviberg-touch.10.0.1.53.xip.io');"
 redis-cli flushall
+lunchy restart homebrew.mxcl.memcached
